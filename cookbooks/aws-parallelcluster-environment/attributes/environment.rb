@@ -25,6 +25,7 @@ default['cluster']["directory_service"]["password_secret_arn"] = nil
 default['cluster']["directory_service"]["domain_read_only_user"] = nil
 default['cluster']["directory_service"]["ldap_tls_ca_cert"] = nil
 default['cluster']["directory_service"]["ldap_tls_req_cert"] = nil
+default['cluster']["directory_service"]["ldap_schema"] = nil
 default['cluster']["directory_service"]["ldap_access_filter"] = nil
 default['cluster']["directory_service"]["generate_ssh_keys_for_users"] = nil
 default['cluster']['directory_service']['additional_sssd_configs'] = nil

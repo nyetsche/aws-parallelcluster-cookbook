@@ -81,6 +81,8 @@ when 'HeadNode'
   domain_properties = {
     # Mandatory properties that must not be overridden by the user.
     'id_provider' => 'ldap',
+
+    # Mandatory property that may be overriden by the user.
     'ldap_schema' => 'AD',
 
     # Mandatory properties that are meant to be set via dedicated cluster config properties,
@@ -104,8 +106,13 @@ when 'HeadNode'
 
   # Optional properties that are meant to be set via dedicated cluster config properties.
   # - ldap_tls_ca_cert
+  # - ldap_schema
   # - ldap_access_filter
   # - access_provider only if ldap_access_filter is specified
+
+  unless node['cluster']['directory_service']['ldap_schema'].eql?('NONE')
+    domain_properties['ldap_schema'] = node['cluster']['directory_service']['ldap_schema']
+  end
 
   unless node['cluster']['directory_service']['ldap_tls_ca_cert'].eql?('NONE')
     domain_properties['ldap_tls_cacert'] = node['cluster']['directory_service']['ldap_tls_ca_cert']
